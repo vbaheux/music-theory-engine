@@ -1,0 +1,38 @@
+package fr.vbaheux.mtengine.entity.scale;
+
+import fr.vbaheux.mtengine.entity.note.Note;
+import fr.vbaheux.mtengine.exception.InvalidValueException;
+import lombok.Getter;
+import lombok.NonNull;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import static fr.vbaheux.mtengine.EngineConstants.NB_SEMITONES_IN_OCTAVE;
+
+public class Scale {
+  @Getter
+  private final ScaleQuality quality;
+
+  @Getter
+  private final Note key;
+
+  @Getter
+  private final List<Note> notes;
+
+  public Scale(@NonNull ScaleQuality quality, @NonNull Note key) {
+    this.quality = quality;
+    this.key = key;
+
+    // Init list of notes
+    this.notes = new LinkedList<>();
+    int offset = 0;
+    for (int step : quality.getSteps()) {
+      notes.add(key.get(offset));
+      offset += step;
+    }
+    if (offset != NB_SEMITONES_IN_OCTAVE) {
+      throw new InvalidValueException(ScaleQuality.class, offset, "Scale quality steps should cover an octave");
+    }
+  }
+}

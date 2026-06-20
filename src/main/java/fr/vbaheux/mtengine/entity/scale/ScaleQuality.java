@@ -14,7 +14,7 @@ public enum ScaleQuality {
 
   private final int[] steps;
 
-  public int getNumberOfDegrees() {
+  public int countSteps() {
     return steps.length;
   }
 

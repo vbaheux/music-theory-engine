@@ -12,15 +12,15 @@ import static fr.vbaheux.mtengine.EngineConstants.NB_SEMITONES_IN_OCTAVE;
 
 public class Scale {
   @Getter
-  private final ScaleQuality quality;
+  private final Note key;
 
   @Getter
-  private final Note key;
+  private final ScaleQuality quality;
 
   @Getter
   private final List<Note> notes;
 
-  public Scale(@NonNull ScaleQuality quality, @NonNull Note key) {
+  public Scale(@NonNull Note key, @NonNull ScaleQuality quality) {
     this.quality = quality;
     this.key = key;
 

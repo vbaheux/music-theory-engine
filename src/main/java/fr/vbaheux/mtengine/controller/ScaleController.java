@@ -1,8 +1,8 @@
 package fr.vbaheux.mtengine.controller;
 
-import fr.vbaheux.mtengine.entity.old.NoteEnum;
-import fr.vbaheux.mtengine.entity.old.Scale;
-import fr.vbaheux.mtengine.entity.old.ScaleType;
+import fr.vbaheux.mtengine.entity.note.Note;
+import fr.vbaheux.mtengine.entity.scale.Scale;
+import fr.vbaheux.mtengine.entity.scale.ScaleQuality;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ScaleController {
   @GetMapping("/scale")
-  public Scale scale(@RequestParam(defaultValue = "C") NoteEnum tonic, @RequestParam(defaultValue = "MAJOR") ScaleType type) {
-    return new Scale(tonic, type);
+  public Scale scale(@RequestParam(defaultValue = "C") Note note, @RequestParam(defaultValue = "MAJOR") ScaleQuality quality) {
+    return new Scale(note, quality);
+    // FIXME JSON response format.
   }
 }

@@ -6,11 +6,9 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum Accidental {
-  DOUBLE_FLAT(-2, "bb"),
   FLAT(-1, "b"),
   NATURAL(0, ""),
-  SHARP(1, "#"),
-  DOUBLE_SHARP(2, "##");
+  SHARP(1, "#");
 
   private final int offset;
   private final String symbol;

@@ -19,8 +19,8 @@ class LetterTestCase {
       "A,5,E",
       "B,5,F"
   })
-  void givenLetterAndDegree_WhenOffset_ThenCorrectResult(Letter letter, int degree, Letter expected) {
-    Letter result = assertDoesNotThrow(() -> letter.offset(degree));
+  void givenLetterAndDegree_WhenAdd_ThenCorrectResult(Letter letter, int degree, Letter expected) {
+    Letter result = assertDoesNotThrow(() -> letter.add(degree));
     assertEquals(expected, result);
   }
 }

@@ -28,14 +28,14 @@ class IntervalTestCase {
       "MINOR,1", "MAJOR,1", "PERFECT,2",
       "PERFECT,3", "MINOR,4", "MAJOR,4",
       "MINOR,5", "MAJOR,5", "PERFECT,6",
-      "PERFECT,7"
+      "PERFECT,7", "DIMINISHED,1"
   })
   void shouldBeInvalid(IntervalQuality intervalQuality, int degree) {
     assertThrows(InvalidValueException.class, () -> new Interval(intervalQuality, degree));
   }
 
   @ParameterizedTest
-  @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13})
+  @ValueSource(ints = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13})
   void shouldBeValidForDiminishedQuality(int degree) {
     Interval interval = assertDoesNotThrow(() -> new Interval(IntervalQuality.DIMINISHED, degree));
     assertEquals(IntervalQuality.DIMINISHED.toString() + degree, interval.toString());

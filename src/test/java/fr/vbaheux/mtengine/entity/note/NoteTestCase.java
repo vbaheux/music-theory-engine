@@ -32,4 +32,22 @@ class NoteTestCase {
     Note result = note.get(interval);
     assertEquals(expected, result);
   }
+
+  private static Stream<Arguments> provideGetWithOffset() {
+    return Stream.of(
+        Arguments.of(Note.of(Letter.C), 7, Note.of(Letter.G)),
+        Arguments.of(Note.of(Letter.C, Accidental.SHARP), 7, Note.of(Letter.G, Accidental.SHARP)),
+        Arguments.of(Note.of(Letter.D, Accidental.FLAT), 7, Note.of(Letter.A, Accidental.FLAT)),
+        Arguments.of(Note.of(Letter.A), 7, Note.of(Letter.E)),
+        Arguments.of(Note.of(Letter.B, Accidental.FLAT), 7, Note.of(Letter.F)),
+        Arguments.of(Note.of(Letter.A, Accidental.FLAT), 4, Note.of(Letter.C))
+    );
+  }
+
+  @ParameterizedTest
+  @MethodSource("provideGetWithOffset")
+  void givenNoteAndInterval_WhenGetWithOffset_ThenCorrectResult(Note note, int offset, Note expected) {
+    Note result = note.get(offset);
+    assertEquals(expected, result);
+  }
 }

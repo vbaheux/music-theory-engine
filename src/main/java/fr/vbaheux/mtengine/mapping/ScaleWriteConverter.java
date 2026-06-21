@@ -13,6 +13,7 @@ import java.util.List;
 public interface ScaleWriteConverter extends Converter<Scale, ScaleDto> {
   ScaleDto convert(@Nullable Scale scale);
 
+  // TODO mutualize note & note list mapping in separate converter
   default String mapNoteToNote(Note note) {
     return note.toString();
   }

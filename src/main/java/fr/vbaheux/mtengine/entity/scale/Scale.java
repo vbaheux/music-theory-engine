@@ -25,8 +25,8 @@ public class Scale {
   }
 
   public Scale(@NonNull Note key, @NonNull ScaleQuality quality) {
-    this.quality = quality;
     this.key = key;
+    this.quality = quality;
 
     // Init list of notes
     this.notes = new LinkedList<>();

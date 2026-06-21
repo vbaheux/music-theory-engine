@@ -24,7 +24,10 @@ public class ChordTestCase {
             List.of(Note.of(Letter.C), Note.of(Letter.E), Note.of(Letter.G))),
         Arguments.argumentSet("Amaj7 (root)",
             Note.of(Letter.A), ChordQuality.MAJOR_SEVENTH, Inversion.ROOT,
-            List.of(Note.of(Letter.A), Note.of(Letter.C, Accidental.SHARP), Note.of(Letter.E), Note.of(Letter.G, Accidental.SHARP)))
+            List.of(Note.of(Letter.A), Note.of(Letter.C, Accidental.SHARP), Note.of(Letter.E), Note.of(Letter.G, Accidental.SHARP))),
+        Arguments.argumentSet("Amaj7 (1st)",
+            Note.of(Letter.A), ChordQuality.MAJOR_SEVENTH, Inversion.FIRST,
+            List.of(Note.of(Letter.C, Accidental.SHARP), Note.of(Letter.E), Note.of(Letter.G, Accidental.SHARP), Note.of(Letter.A)))
     );
   }
 

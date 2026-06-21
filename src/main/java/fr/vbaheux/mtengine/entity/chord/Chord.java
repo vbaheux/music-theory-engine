@@ -5,6 +5,7 @@ import fr.vbaheux.mtengine.entity.note.Note;
 import fr.vbaheux.mtengine.exception.InvalidValueException;
 import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -32,7 +33,7 @@ public class Chord {
     this.inversion = inversion;
 
     // Put intervals in the right order
-    List<Interval> intervals = quality.getIntervals();
+    List<Interval> intervals = new ArrayList<>(quality.getIntervals());
 
     for (int i = 0; i < inversion.ordinal(); i++) {
       Interval toInvert = intervals.removeFirst();

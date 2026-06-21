@@ -74,7 +74,7 @@ public record Interval(@NonNull IntervalQuality quality, int degree) {
    * @return the equivalent simple interval degree.
    */
   private int getSimpleIntervalDegree() {
-    return degree % NB_STEPS_DIATONIC_SCALE;
+    return degree % (NB_STEPS_DIATONIC_SCALE + 1);
   }
 
   private static void validateConstructorArgs(IntervalQuality quality, int degree) {

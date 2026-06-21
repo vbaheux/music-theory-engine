@@ -22,7 +22,8 @@ class NoteTestCase {
         Arguments.of(Note.of(Letter.D, Accidental.FLAT), Interval.of(IntervalQuality.PERFECT, 5), Note.of(Letter.A, Accidental.FLAT)),
         Arguments.of(Note.of(Letter.A), Interval.of(IntervalQuality.PERFECT, 5), Note.of(Letter.E)),
         Arguments.of(Note.of(Letter.B, Accidental.FLAT), Interval.of(IntervalQuality.PERFECT, 5), Note.of(Letter.F)),
-        Arguments.of(Note.of(Letter.A, Accidental.FLAT), Interval.of(IntervalQuality.MAJOR, 3), Note.of(Letter.C))
+        Arguments.of(Note.of(Letter.A, Accidental.FLAT), Interval.of(IntervalQuality.MAJOR, 3), Note.of(Letter.C)),
+        Arguments.of(Note.of(Letter.A, Accidental.NATURAL), Interval.of(IntervalQuality.MAJOR, 7), Note.of(Letter.G, Accidental.SHARP))
     );
   }
 

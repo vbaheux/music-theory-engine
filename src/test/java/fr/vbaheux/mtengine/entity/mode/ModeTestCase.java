@@ -30,7 +30,8 @@ public class ModeTestCase {
   @ParameterizedTest
   @MethodSource("provideNewMode")
   void givenKeyAndQuality_WhenNewMode_ThenCorrectNotesInstantiation(Note key, ModeQuality quality, List<Note> expectedNotes) {
+    // TODO check output chords as well
     Mode result = Mode.of(key, quality);
-    assertEquals(expectedNotes, result.getNotes());
+    assertEquals(expectedNotes, result.getDegrees().stream().map(degree -> degree.note()).toList());
   }
 }

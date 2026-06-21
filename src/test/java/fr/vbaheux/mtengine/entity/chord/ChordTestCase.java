@@ -34,7 +34,7 @@ public class ChordTestCase {
   @ParameterizedTest
   @MethodSource("provideNewChord")
   void givenNoteQualityAndInversion_WhenNewChord_ThenCorrectResult(Note root, ChordQuality quality, Inversion inversion, List<Note> expected) {
-    Chord chord = assertDoesNotThrow(() -> new Chord(root, quality, inversion));
+    Chord chord = assertDoesNotThrow(() -> Chord.of(root, quality, inversion));
     assertEquals(expected, chord.getNotes());
   }
 }

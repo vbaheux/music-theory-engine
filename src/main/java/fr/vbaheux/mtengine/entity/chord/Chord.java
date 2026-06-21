@@ -19,8 +19,8 @@ public class Chord {
 
   private final List<Note> notes;
 
-  public Chord(Note root, ChordQuality quality) {
-    this(root, quality, Inversion.ROOT);
+  public static Chord of(Note root, ChordQuality quality, Inversion inversion) {
+    return new Chord(root, quality, inversion);
   }
 
   public Chord(Note root, ChordQuality quality, Inversion inversion) {

@@ -20,6 +20,10 @@ public class Scale {
   @Getter
   private final List<Note> notes;
 
+  public static Scale of(@NonNull Note key, @NonNull ScaleQuality quality) {
+    return new Scale(key, quality);
+  }
+
   public Scale(@NonNull Note key, @NonNull ScaleQuality quality) {
     this.quality = quality;
     this.key = key;

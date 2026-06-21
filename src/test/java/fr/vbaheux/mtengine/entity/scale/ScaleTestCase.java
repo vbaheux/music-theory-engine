@@ -30,7 +30,7 @@ public class ScaleTestCase {
   @ParameterizedTest
   @MethodSource("provideNewScale")
   void givenKeyAndQuality_WhenNewScale_ThenCorrectNotesInstantiation(Note key, ScaleQuality quality, List<Note> expectedNotes) {
-    Scale result = new Scale(key, quality);
+    Scale result = Scale.of(key, quality);
     assertEquals(expectedNotes, result.getNotes());
   }
 

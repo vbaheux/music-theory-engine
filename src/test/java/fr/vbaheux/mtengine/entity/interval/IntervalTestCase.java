@@ -19,7 +19,7 @@ class IntervalTestCase {
       "MINOR,7", "MAJOR,7"
   })
   void shouldBeValid(IntervalQuality intervalQuality, int degree) {
-    Interval interval = assertDoesNotThrow(() -> new Interval(intervalQuality, degree));
+    Interval interval = assertDoesNotThrow(() -> Interval.of(intervalQuality, degree));
     assertEquals(intervalQuality.toString() + degree, interval.toString());
   }
 
@@ -31,20 +31,20 @@ class IntervalTestCase {
       "PERFECT,7", "DIMINISHED,1"
   })
   void shouldBeInvalid(IntervalQuality intervalQuality, int degree) {
-    assertThrows(InvalidValueException.class, () -> new Interval(intervalQuality, degree));
+    assertThrows(InvalidValueException.class, () -> Interval.of(intervalQuality, degree));
   }
 
   @ParameterizedTest
   @ValueSource(ints = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13})
   void shouldBeValidForDiminishedQuality(int degree) {
-    Interval interval = assertDoesNotThrow(() -> new Interval(IntervalQuality.DIMINISHED, degree));
+    Interval interval = assertDoesNotThrow(() -> Interval.of(IntervalQuality.DIMINISHED, degree));
     assertEquals(IntervalQuality.DIMINISHED.toString() + degree, interval.toString());
   }
 
   @ParameterizedTest
   @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13})
   void shouldBeValidForAugmentedQuality(int degree) {
-    Interval interval = assertDoesNotThrow(() -> new Interval(IntervalQuality.AUGMENTED, degree));
+    Interval interval = assertDoesNotThrow(() -> Interval.of(IntervalQuality.AUGMENTED, degree));
     assertEquals(IntervalQuality.AUGMENTED.toString() + degree, interval.toString());
   }
 }

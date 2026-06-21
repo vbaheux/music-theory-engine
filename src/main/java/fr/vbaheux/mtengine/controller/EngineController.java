@@ -24,13 +24,13 @@ public class EngineController {
   @GetMapping("/scale")
   public ScaleDto scale(@RequestParam(defaultValue = "C") Note key,
                         @RequestParam(defaultValue = "MAJOR") ScaleQuality quality) {
-    return conversionService.convert(new Scale(key, quality), ScaleDto.class);
+    return conversionService.convert(Scale.of(key, quality), ScaleDto.class);
   }
 
   @GetMapping("/chord")
   public ChordDto chord(@RequestParam(defaultValue = "C") Note root,
                         @RequestParam(defaultValue = "MAJOR") ChordQuality quality,
                         @RequestParam(defaultValue = "ROOT") Inversion inversion) {
-    return conversionService.convert(new Chord(root, quality, inversion), ChordDto.class);
+    return conversionService.convert(Chord.of(root, quality, inversion), ChordDto.class);
   }
 }

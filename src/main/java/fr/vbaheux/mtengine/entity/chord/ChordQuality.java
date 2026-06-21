@@ -10,67 +10,69 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 public enum ChordQuality {
-  MAJOR(List.of(
+  MAJOR("", List.of(
       Interval.of(IntervalQuality.PERFECT, 1),
       Interval.of(IntervalQuality.MAJOR, 3),
       Interval.of(IntervalQuality.PERFECT, 5)
   )),
-  MINOR(List.of(
+  MINOR("m", List.of(
       Interval.of(IntervalQuality.PERFECT, 1),
       Interval.of(IntervalQuality.MINOR, 3),
       Interval.of(IntervalQuality.PERFECT, 5)
   )),
-  DIMINISHED(List.of(
+  DIMINISHED("°", List.of(
       Interval.of(IntervalQuality.PERFECT, 1),
       Interval.of(IntervalQuality.MINOR, 3),
       Interval.of(IntervalQuality.DIMINISHED, 5)
   )),
-  AUGMENTED(List.of(
+  AUGMENTED("+", List.of(
       Interval.of(IntervalQuality.PERFECT, 1),
       Interval.of(IntervalQuality.MAJOR, 3),
       Interval.of(IntervalQuality.AUGMENTED, 5)
   )),
-  MAJOR_SEVENTH(List.of(
+  MAJOR_SEVENTH("maj7", List.of(
       Interval.of(IntervalQuality.PERFECT, 1),
       Interval.of(IntervalQuality.MAJOR, 3),
       Interval.of(IntervalQuality.PERFECT, 5),
       Interval.of(IntervalQuality.MAJOR, 7)
   )),
-  MINOR_SEVENTH(List.of(
+  MINOR_SEVENTH("m7", List.of(
       Interval.of(IntervalQuality.PERFECT, 1),
       Interval.of(IntervalQuality.MINOR, 3),
       Interval.of(IntervalQuality.PERFECT, 5),
       Interval.of(IntervalQuality.MINOR, 7)
   )),
-  DOMINANT_SEVENTH(List.of(
+  DOMINANT_SEVENTH("7", List.of(
       Interval.of(IntervalQuality.PERFECT, 1),
       Interval.of(IntervalQuality.MAJOR, 3),
       Interval.of(IntervalQuality.PERFECT, 5),
       Interval.of(IntervalQuality.MINOR, 7))),
-  DIMINISHED_SEVENTH(List.of(
+  DIMINISHED_SEVENTH("°7", List.of(
       Interval.of(IntervalQuality.PERFECT, 1),
       Interval.of(IntervalQuality.MINOR, 3),
       Interval.of(IntervalQuality.DIMINISHED, 5),
       Interval.of(IntervalQuality.DIMINISHED, 7)
   )),
-  HALF_DIMINISHED_SEVENTH(List.of(
+  HALF_DIMINISHED_SEVENTH("m7(b5)", List.of(
       Interval.of(IntervalQuality.PERFECT, 1),
       Interval.of(IntervalQuality.MINOR, 3),
       Interval.of(IntervalQuality.DIMINISHED, 5),
       Interval.of(IntervalQuality.MINOR, 7)
   )),
-  MINOR_MAJOR_SEVENTH(List.of(
+  MINOR_MAJOR_SEVENTH("m(M7)", List.of(
       Interval.of(IntervalQuality.PERFECT, 1),
       Interval.of(IntervalQuality.MINOR, 3),
       Interval.of(IntervalQuality.PERFECT, 5),
       Interval.of(IntervalQuality.MAJOR, 7)
   )),
-  AUGMENTED_MAJOR_SEVENTH(List.of(
+  AUGMENTED_MAJOR_SEVENTH("+(M7)", List.of(
       Interval.of(IntervalQuality.PERFECT, 1),
       Interval.of(IntervalQuality.MAJOR, 3),
       Interval.of(IntervalQuality.AUGMENTED, 5),
       Interval.of(IntervalQuality.MAJOR, 7)
   ));
+
+  private final String shortName;
 
   private final List<Interval> intervals;
 }

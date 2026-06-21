@@ -64,7 +64,7 @@ public class Mode {
       // Build the associated chord
       Chord currentChord = Chord.of(currentNote, chordQuality, Inversion.ROOT);
       // Add the note & chord to the list of degrees
-      degrees.add(Degree.of(currentNote, currentChord));
+      degrees.add(Degree.of(currentDegree + 1, currentNote, currentChord));
       // Prepare for next loop
       currentDegree++;
       noteOffsetFromKey += step;

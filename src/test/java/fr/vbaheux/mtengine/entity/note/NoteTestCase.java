@@ -30,7 +30,7 @@ class NoteTestCase {
   @ParameterizedTest
   @MethodSource("provideGetWithInterval")
   void givenNoteAndInterval_WhenGetWithInterval_ThenCorrectResult(Note note, Interval interval, Note expected) {
-    Note result = note.get(interval);
+    Note result = note.get(interval, Accidental.SHARP); // TODO adapt unit test to cover preferred accidentals
     assertEquals(expected, result);
   }
 
@@ -48,7 +48,7 @@ class NoteTestCase {
   @ParameterizedTest
   @MethodSource("provideGetWithOffset")
   void givenNoteAndInterval_WhenGetWithOffset_ThenCorrectResult(Note note, int offset, Note expected) {
-    Note result = note.get(offset);
+    Note result = note.get(offset, Accidental.SHARP); // TODO adapt unit test to cover preferred accidentals
     assertEquals(expected, result);
   }
 }

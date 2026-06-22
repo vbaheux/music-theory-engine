@@ -1,5 +1,6 @@
 package fr.vbaheux.mtengine.entity.scale;
 
+import fr.vbaheux.mtengine.entity.note.Accidental;
 import fr.vbaheux.mtengine.entity.note.Note;
 import fr.vbaheux.mtengine.exception.InvalidValueException;
 import lombok.Getter;
@@ -32,7 +33,7 @@ public class Scale {
     this.notes = new LinkedList<>();
     int offset = 0;
     for (int step : quality.getSteps()) {
-      notes.add(key.get(offset));
+      notes.add(key.get(offset, Accidental.SHARP)); // TODO add accidental preferences map for ScaleQuality as well
       offset += step;
     }
     if (offset != NB_SEMITONES_IN_OCTAVE) {

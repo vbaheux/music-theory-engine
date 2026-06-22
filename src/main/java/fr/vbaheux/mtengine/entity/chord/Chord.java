@@ -1,6 +1,7 @@
 package fr.vbaheux.mtengine.entity.chord;
 
 import fr.vbaheux.mtengine.entity.interval.Interval;
+import fr.vbaheux.mtengine.entity.note.Accidental;
 import fr.vbaheux.mtengine.entity.note.Note;
 import fr.vbaheux.mtengine.exception.InvalidValueException;
 import lombok.Getter;
@@ -20,10 +21,14 @@ public class Chord {
   private final List<Note> notes;
 
   public static Chord of(Note root, ChordQuality quality, Inversion inversion) {
-    return new Chord(root, quality, inversion);
+    return new Chord(root, quality, inversion, Accidental.SHARP); // Arbitrary default preferred accidental.
   }
 
-  public Chord(Note root, ChordQuality quality, Inversion inversion) {
+  public static Chord of(Note root, ChordQuality quality, Inversion inversion, Accidental preferredAccidental) {
+    return new Chord(root, quality, inversion, preferredAccidental);
+  }
+
+  public Chord(Note root, ChordQuality quality, Inversion inversion, Accidental preferredAccidental) {
     if (inversion == Inversion.THIRD && quality.getIntervals().size() < 4) {
       throw new InvalidValueException(Chord.class, inversion, "cannot have a 3rd inversion for a chord with less than 4 notes.");
     }
@@ -40,7 +45,7 @@ public class Chord {
       intervals.add(toInvert);
     }
     // Convert to the notes of the chord
-    this.notes = intervals.stream().map(root::get).toList();
+    this.notes = intervals.stream().map(interval -> root.get(interval, preferredAccidental)).toList();
   }
 
 }

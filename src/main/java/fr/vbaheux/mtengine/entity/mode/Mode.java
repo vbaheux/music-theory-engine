@@ -3,6 +3,7 @@ package fr.vbaheux.mtengine.entity.mode;
 import fr.vbaheux.mtengine.entity.chord.Chord;
 import fr.vbaheux.mtengine.entity.chord.ChordQuality;
 import fr.vbaheux.mtengine.entity.chord.Inversion;
+import fr.vbaheux.mtengine.entity.note.Accidental;
 import fr.vbaheux.mtengine.entity.note.Note;
 import fr.vbaheux.mtengine.exception.InvalidValueException;
 import lombok.Getter;
@@ -50,6 +51,8 @@ public class Mode {
   }
 
   private static List<Degree> buildDegrees(Note key, ModeQuality quality) {
+    Accidental preferredAccidental = getPreferredAccidental(key, quality);
+
     List<Degree> degrees = new LinkedList<>();
     // Counter to determine which degree we're currently at
     int currentDegree = 0;
@@ -58,11 +61,11 @@ public class Mode {
 
     for (int step : quality.getSteps()) {
       // Find the current note
-      Note currentNote = key.get(noteOffsetFromKey);
+      Note currentNote = key.get(noteOffsetFromKey, preferredAccidental);
       // Find the chord's quality in the list - from the mode's quality and the current degree
       ChordQuality chordQuality = chordQualities.get((currentDegree + quality.ordinal()) % chordQualities.size());
       // Build the associated chord
-      Chord currentChord = Chord.of(currentNote, chordQuality, Inversion.ROOT);
+      Chord currentChord = Chord.of(currentNote, chordQuality, Inversion.ROOT, preferredAccidental);
       // Add the note & chord to the list of degrees
       degrees.add(Degree.of(currentDegree + 1, currentNote, currentChord));
       // Prepare for next loop
@@ -76,5 +79,12 @@ public class Mode {
     }
 
     return degrees;
+  }
+
+  private static Accidental getPreferredAccidental(Note key, ModeQuality quality) {
+    if (key.isNatural()) {
+      return quality.getPreferredAccidental(key.getLetter());
+    }
+    return key.getAccidental();
   }
 }
